@@ -8,7 +8,7 @@
 
 package coe.unosquare.benefits.util;
 
-import coe.unosquare.benefits.product.Product;
+import coe.unosquare.benefits.models.Product;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;

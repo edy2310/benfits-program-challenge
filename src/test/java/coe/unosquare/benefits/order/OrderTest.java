@@ -8,7 +8,7 @@
 
 package coe.unosquare.benefits.order;
 
-import coe.unosquare.benefits.product.Product;
+import coe.unosquare.benefits.models.Product;
 import coe.unosquare.benefits.util.ProductGenerator;
 import org.junit.jupiter.api.Test;
 import java.util.Map;

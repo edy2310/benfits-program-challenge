@@ -1,16 +1,16 @@
 /*
  * package-info.java
  * 1.0
- * 2022-11-07
+ * 2023-01-14
  * Copyright 2022 Unosquare
  * Any illegal reproduction of this content will result in immediate legal action.
  */
 
 /**
- * This package contains all classes related to Product objects related.
+ * This package contains all classes related to the Payment service related.
  *
- * @author Emmanuel Huitrado
+ * @author Edgar Munoz
  * @version 1.0
  */
 
-package coe.unosquare.benefits.product;
+package coe.unosquare.benefits.services.payment;

@@ -8,8 +8,13 @@
 
 package coe.unosquare.benefits.util;
 
-import coe.unosquare.benefits.order.Order;
-import coe.unosquare.benefits.product.Product;
+import coe.unosquare.benefits.common.exceptions.InvalidPaymentTypeException;
+import coe.unosquare.benefits.common.exceptions.InvalidProductException;
+import coe.unosquare.benefits.models.Order;
+import coe.unosquare.benefits.models.Product;
+import coe.unosquare.benefits.services.payment.PaymentService;
+import coe.unosquare.benefits.services.payment.PaymentServiceImpl;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Map;
@@ -32,14 +37,19 @@ public final class PayOrderSimulator {
      */
     public static Double payOrder(final Map<Product, Integer> products,
                                   final String paymentType) {
+        PaymentService paymentService = new PaymentServiceImpl();
         Order order = new Order(products);
-        Double subtotal = products.entrySet()
+        double subtotal = products.entrySet()
                             .stream()
                             .mapToDouble(product -> product.getKey().getPrice() * product.getValue())
                             .sum();
-        return new BigDecimal((subtotal - order.pay(paymentType)) / subtotal)
-                .setScale(2, RoundingMode.HALF_EVEN)
-                .doubleValue();
+        try {
+            return new BigDecimal((subtotal - paymentService.pay(paymentType, products)) / subtotal)
+                    .setScale(2, RoundingMode.HALF_EVEN)
+                    .doubleValue();
+        } catch (InvalidPaymentTypeException | InvalidProductException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

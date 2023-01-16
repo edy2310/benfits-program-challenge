@@ -7,10 +7,10 @@
  */
 
 /**
- * This package contains all classes related to Order object related.
+ * This package contains all classes related to all the models.
  *
- * @author Emmanuel Huitrado
+ * @author Edgar Munoz
  * @version 1.0
  */
 
-package coe.unosquare.benefits.order;
+package coe.unosquare.benefits.models;
